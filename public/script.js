@@ -210,5 +210,5 @@ document.querySelector('.exit-btn').addEventListener('click', () => {
     localStorage.removeItem('currentChat');
     chat.innerHTML = '';
     localStorage.removeItem('pdfLoaded');
-    window.location.href = 'about:blank';
+    window.location.href = '../../landingpage/landingpage.html';
 });
