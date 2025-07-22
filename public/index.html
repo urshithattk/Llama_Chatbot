@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Personal ChatGpt</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    html {
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <img id="hamburger" class="hamburger" src="sidebar.png" alt="menu" />
+    <button class="new-chat" onclick="location.reload()">Clear Chat</button>
+    <button class="exit-btn">Exit</button>
+  </div>
+
+  <!-- Chat container -->
+  <div class="chat-container">
+    <div id="chat" class="chat-messages"></div>
+  </div>
+
+  <!-- Input centered at bottom -->
+  <div class="input-outer">
+    <div class="input-wrapper">
+      <div id="pdfBubbleContainer"></div>
+      <textarea id="input" placeholder="Ask anything..." rows="1"></textarea>
+      <div class="icons-inside">
+        <label for="pdf-upload">
+          <img src="create.png" alt="attach" title="Attach PDF" style="cursor:pointer;">
+        </label>
+        <input type="file" id="pdf-upload" style="display:none" accept="application/pdf" />
+        <img id="micBtn" src="mic.png" alt="mic" title="Mic" />
+        <img id="tickBtn" src="tick.png" alt="done" title="Done" style="display:none;" />
+        <img id="sendBtn" src="send.png" alt="send" title="Send" />
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

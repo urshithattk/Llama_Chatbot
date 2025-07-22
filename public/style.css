@@ -1,0 +1,244 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #121212;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100%;
+  background-color: #1e1e1e;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(-220px);
+  transition: transform 0.3s ease;
+  padding: 16px 12px;
+  z-index: 1000;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.3);
+}
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/* Image Hamburger */
+.hamburger {
+  position: absolute;
+  top: 16px;
+  right: -40px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  z-index: 1100;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Sidebar content */
+.new-chat {
+  background-color: #343434;
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 50px;
+  margin-bottom: 16px;
+}
+.chat-history {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.chat-history div {
+  background: #2c2c2c;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.chat-history div:hover {
+  background: #3c3c3c;
+}
+.exit-btn {
+  background-color: transparent;
+  border: 1px solid #888;
+  color: #ccc;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.exit-btn:hover {
+  background-color: #333;
+}
+
+/* Chat area */
+.chat-container {
+  height: 100vh;
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center horizontally */
+  padding: 20px;
+}
+.chat-container.shifted {
+  margin-left: 220px;
+}
+
+.chat-messages {
+  width: calc(100% - 60px);
+  max-width: 800px;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 90px;
+}
+
+.user-bubble {
+  align-self: flex-end;
+  background-color: #343434;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 16px;
+  max-width: 60%;
+  word-wrap: break-word;
+  font-size: 15px;
+}
+.bot-message {
+  align-self: flex-start;
+  color: #dddddd;
+  font-size: 15px;
+  padding: 4px 8px;
+  max-width: 80%;
+  white-space: pre-wrap;
+}
+
+/* Input bar - outer container */
+.input-outer {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 60px);
+  max-width: 800px;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+.chat-container.shifted + .input-outer {
+  left: calc(50% + 110px);
+  transform: translateX(-50%);
+}
+
+/* Input styling */
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+#input {
+  width: 100%;
+  min-height: 48px;
+  max-height: 200px;
+  resize: none;
+  overflow-y: auto;
+  background-color: #2c2c2c;
+  color: white;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  border-radius: 16px;
+  padding: 12px 60px 60px 16px;
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+}
+#input::-webkit-scrollbar {
+  width: 6px;
+}
+#input::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 6px;
+}
+.icons-inside {
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  display: flex;
+  gap: 10px;
+}
+.icons-inside img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.icons-inside img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Mobile support */
+@media (max-width: 600px) {
+  .chat-container.shifted {
+    margin-left: 0;
+  }
+  .sidebar {
+    width: 100%;
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .hamburger {
+    right: -52px;
+  }
+}
+.user-bubble,
+.bot-message {
+  width: fit-content;
+  max-width: 100%;
+}
+.chat-summary-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2c2c2c;
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+
+
+.clear-memory-btn {
+  margin-top: auto;
+  background: #ff6666;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 90%;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.clear-memory-btn:hover {
+  background: #cc0000;
+}
